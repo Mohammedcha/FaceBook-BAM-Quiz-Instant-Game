@@ -1,0 +1,418 @@
+/*=================================================*/
+/*-------------------------------------------------*/
+/*----------------- Facebook ----------------------*/
+/*--------------- Instant Game --------------------*/
+/*------------- Re-skinning Quiz ------------------*/
+/*-------------- By Mohammed Cha ------------------*/
+/*-------------- Re-Skinning grp ------------------*/
+/*-------------------------------------------------*/
+/*=================================================*/
+
+
+/* red : f44259 */ 
+
+/* Blue - NOW : f44259 */ 
+
+@charset "UTF-8";
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+@media only screen and (max-width: 319px) {
+  html {
+    font-size: 16px; } }
+
+@media only screen and (min-width: 320px) {
+  html {
+    font-size: 5.625vw; } }
+
+body {
+  font-family: helvetica neue,Helvetica,Arial,sans-serif;
+  background: #f9f9f9; 
+  width: 100%;
+  height: 100%;
+}
+  body.rtl #quiz-title, body.rtl .question-answers .text, body.rtl .quiz-holder p, body.rtl #footer {
+    direction: rtl;
+    text-align: right !important; }
+  body.rtl .question-title, body.rtl #related-quizzes-ca {
+    direction: rtl; }
+
+.main {
+  padding: 55px 0;
+  overflow-x: hidden; }
+  .main #scene {
+    min-height: 95vh;
+    min-width: 94vw; }
+
+.header {
+  position: fixed;
+  display: flex;
+  flex-wrap: nowrap;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #f44259;
+  padding: 4px;
+  align-items: center;
+  z-index: 999; }
+  .header .house-icon {
+    cursor: pointer;
+    height: 30px; }
+  .header #logo {
+    cursor: pointer;
+    width: 117px;
+    margin: 0 auto;
+	}
+
+#footer {
+  background-color: #f44259;
+  color: white;
+  font-size: 0.8rem;
+  padding: 1rem;
+  margin-top: 2.5rem; 
+  text-align: center;
+}
+#bot-popup-overlay {
+  background: rgba(236, 236, 236, 0.85);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  overflow-y: scroll;
+  position: fixed;
+  z-index: 999; }
+
+#bot-popup-content {
+  position: absolute;
+  width: 60%;
+  height: 40%;
+  background-color: white;
+  color: black;
+  top: 20%;
+  left: 20%;
+  z-index: 1000; }
+  #bot-popup-content button {
+    border-color: black;
+    width: 100px; }
+
+#answer-wrapper, #quiz-result .quiz-questions .question.image .question-answers .answer-wrapper, #quiz-result .quiz-questions .question.text .answer-wrapper {
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  border: 1px solid #d4d4d4;
+  cursor: pointer; }
+  #answer-wrapper.selected, #quiz-result .quiz-questions .question.image .question-answers .selected.answer-wrapper, #quiz-result .quiz-questions .question.text .selected.answer-wrapper {
+          background-color: #f44259; 
+	}
+
+#quiz-result {
+  padding: 1rem 1.3vw;
+  background-color: white;
+  width: 100%; }
+  #quiz-result #quiz-title {
+    font-weight: 700;
+    font-size: 1.2rem;
+	text-align: center;
+	background: #e2f6ff;
+	padding: 0.3em;
+	border-radius: 0.4rem;
+	border: 1px solid #c1ebff;
+	color: #07587d;
+    line-height: 1.4rem;
+    margin-bottom: 0.4rem; }
+  #quiz-result .quiz-subtitle {
+    color: #616161;
+    font-size: 0.8em; }
+  #quiz-result .quiz-questions {
+    margin-top: 0.5rem; }
+    #quiz-result .quiz-questions .question {
+      margin-bottom: 2rem; }
+      #quiz-result .quiz-questions .question .question-title {
+        text-align: center;
+        color: white;
+        font-size: 1.2rem;
+        line-height: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+        padding: 0.8rem 0.3rem;
+          background: #f44259; 
+		}
+      #quiz-result .quiz-questions .question.image .question-answers {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly; }
+        #quiz-result .quiz-questions .question.image .question-answers .answer-wrapper {
+          text-align: center;
+          margin-bottom: 0.2rem;
+          cursor: pointer; }
+          #quiz-result .quiz-questions .question.image .question-answers .answer-wrapper .img-wrapper {
+            width: 4.5rem;
+            height: 4.5rem;
+            position: relative; }
+            #quiz-result .quiz-questions .question.image .question-answers .answer-wrapper .img-wrapper img {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              -o-object-fit: cover;
+              object-fit: cover; }
+          #quiz-result .quiz-questions .question.image .question-answers .answer-wrapper:not(:nth-child(2n)), #quiz-result .quiz-questions .question.image .question-answers .answer-wrapper:not(:nth-child(5n)) {
+            margin-right: 0.2rem; }
+      #quiz-result .quiz-questions .question.text .answer-wrapper {
+        margin: 0.5rem 0; }
+        #quiz-result .quiz-questions .question.text .answer-wrapper .text {
+          margin-left: 5px;
+          font-size: 1rem; }
+        #quiz-result .quiz-questions .question.text .answer-wrapper.selected {
+          background-color: #f44259; }
+          #quiz-result .quiz-questions .question.text .answer-wrapper.selected .text {
+            color: white; }
+
+#container {
+  margin: 0 auto !important; }
+
+#related-quizzes {
+  padding: 0 0.5vw;
+  text-align: center; }
+  #related-quizzes .quiz-holder {
+    width: 100%;
+    padding: 1.5vw;
+    position: relative;
+    cursor: pointer;
+    display: inline-block; }
+    #related-quizzes .quiz-holder.main-quiz {
+      width: 100%;
+      -webkit-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+      -moz-box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25); }
+    #related-quizzes .quiz-holder .ibox {
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.25);
+      background-color: #fff;
+      border-radius: 0.15rem;
+      border: 1px solid transparent;
+      margin-bottom: 8px;
+      height: 100%;
+      position: relative; }
+      #related-quizzes .quiz-holder .ibox a {
+        text-decoration: none; }
+      #related-quizzes .quiz-holder .ibox .wide-img-wrapper {
+        display: block;
+        position: relative;
+        height: inherit;
+        max-height: 8.6rem; }
+        #related-quizzes .quiz-holder .ibox .wide-img-wrapper img {
+          height: 101%;
+          width: 100%;
+          max-height: 9rem;
+          -o-object-fit: cover;
+          object-fit: cover;
+          border-radius: 0.15rem; }
+        #related-quizzes .quiz-holder .ibox .wide-img-wrapper .img-overlay {
+          position: absolute;
+          width: 101%;
+          height: 102%;
+          background: linear-gradient(180deg, transparent 20%, rgba(0, 0, 0, 0.4));
+          z-index: 1;
+          top: 0;
+          left: 0;
+          border-radius: 0.15rem; }
+      #related-quizzes .quiz-holder .ibox p {
+        display: block;
+        padding: .4rem;
+        font-size: 1rem;
+        line-height: 1.2rem;
+        color: #424242;
+        text-align: center;
+        font-weight: 700;
+        z-index: 2; }
+      #related-quizzes .quiz-holder .ibox .quiz-label {
+        position: absolute;
+        box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+        font-size: .5rem;
+        padding: 0 .2rem;
+        background-color: #fff;
+        border-radius: .1rem;
+        top: .5rem;
+        left: .5rem; }
+    #related-quizzes .quiz-holder:nth-child(5n+1) .wide-img-wrapper {
+      background-color: #9d88c1;
+      border-radius: 0.15rem; }
+    #related-quizzes .quiz-holder:nth-child(5n+1) .quiz-label:before {
+      content: "😍 LOL"; }
+    #related-quizzes .quiz-holder:nth-child(5n+2) .wide-img-wrapper {
+      background-color: #ef562d;
+      border-radius: 0.15rem; }
+    #related-quizzes .quiz-holder:nth-child(5n+2) .quiz-label:before {
+      content: "🔥 HOT"; }
+    #related-quizzes .quiz-holder:nth-child(5n+3) .wide-img-wrapper {
+      background-color: #97d7e2;
+      border-radius: 0.15rem; }
+    #related-quizzes .quiz-holder:nth-child(5n+3) .quiz-label:before {
+      content: "😮 NEW"; }
+    #related-quizzes .quiz-holder:nth-child(5n+4) .wide-img-wrapper {
+      background-color: #8eb94f;
+      border-radius: 0.15rem; }
+    #related-quizzes .quiz-holder:nth-child(5n+4) .quiz-label:before {
+      content: "😱 Trending"; }
+    #related-quizzes .quiz-holder:nth-child(5n+5) .wide-img-wrapper {
+      background-color: #efccc3;
+      border-radius: 0.15rem; }
+    #related-quizzes .quiz-holder:nth-child(5n+5) .quiz-label:before {
+      content: "🔥 HOT"; }
+
+#related-quizzes-ca {
+  background: #f44259;
+  padding: 1rem;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0.6rem; }
+
+.btn {
+  border: none;
+  background-color: #fff;
+  text-align: center;
+  cursor: pointer;
+  font-family: SF Pro Display,SF Pro Icons,Helvetica Neue,Helvetica,Arial,sans-serif; }
+  .btn img {
+    margin-right: .4em; }
+
+.fb-share {
+  border-radius: .25rem;
+  padding: 0 .5rem;
+  height: 3rem;
+  line-height: 3rem;
+  border: 1px solid #3b5999;
+  color: #fff;
+  background-color: #3b5999;
+  width: 80%;
+  margin: .5rem auto; }
+  .fb-share img {
+    width: 1rem; }
+
+.tryagain {
+  background: #54ab00;
+  font-size: 1em;
+  color: #fff;
+  text-align: center;
+  padding: .6rem 2rem;
+  border-radius: .2rem;
+  max-width: fit-content;
+  margin: 0 auto; }
+  .tryagain img {
+    width: 1rem; }
+
+.disabled {
+  opacity: 0.5;
+  filter: alpha(opacity=50); }
+
+#result-loader {
+  min-height: 100%;
+  display: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; }
+  #result-loader #loader-images img {
+    display: none;
+    width: 5rem; }
+  #result-loader .typewriter {
+    color: black;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    margin: 0 auto;
+    animation: typing 2s steps(30, end), blink-caret 0.5s step-end infinite; }
+
+@keyframes typing {
+  from {
+    width: 0; }
+  to {
+    width: 100%; } }
+
+#main-loader {
+  display: none;
+  background: #f44259; 
+  position: fixed;
+  z-index: 999;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; }
+  #main-loader div {
+    left: 40%;
+    top: 40%;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    margin: 6px;
+    border: 6px solid #fff;
+    border-radius: 50%;
+    animation: main-loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #fff transparent transparent transparent;
+    width: 20vw;
+    height: 20vw; }
+  #main-loader:nth-child(1) {
+    animation-delay: -0.45s; }
+  #main-loader:nth-child(2) {
+    animation-delay: -0.3s; }
+  #main-loader:nth-child(3) {
+    animation-delay: -0.15s; }
+
+@keyframes main-loader {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+.question-loader {
+  position: absolute;
+  left: 16%;
+  top: 12%; }
+  .question-loader div {
+    left: 40%;
+    top: 40%;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    margin: 6px;
+    border: 6px solid #fff;
+    border-radius: 50%;
+    animation: main-loader 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+    border-color: #2E8BDB transparent transparent transparent;
+    width: 15vw;
+    height: 15vw; }
+  .question-loader:nth-child(1) {
+    animation-delay: -0.45s; }
+  .question-loader:nth-child(2) {
+    animation-delay: -0.3s; }
+  .question-loader:nth-child(3) {
+    animation-delay: -0.15s; }
+
+@keyframes main-loader {
+  0% {
+    transform: rotate(0deg); }
+  100% {
+    transform: rotate(360deg); } }
+
+	
+/*=================================================*/
+/*-------------------------------------------------*/
+/*----------------- Facebook ----------------------*/
+/*--------------- Instant Game --------------------*/
+/*------------- Re-skinning Quiz ------------------*/
+/*-------------- By Mohammed Cha ------------------*/
+/*-------------- Re-Skinning grp ------------------*/
+/*-------------------------------------------------*/
+/*=================================================*/

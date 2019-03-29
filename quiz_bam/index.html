@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<!-------------------------------------------------->
+<!-------------------------------------------------->
+<!------------------ BAM Quiz ---------------------->
+<!---------------- Instant Game -------------------->
+<!--------------- By Mohammed Cha ------------------>
+<!--------------- Re-Skinning grp ------------------>
+<!-------------------------------------------------->
+<!-------------------------------------------------->
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="full-screen" content="yes"/>
+  <meta name="screen-orientation" content="portrait"/>
+  <script src="include_js/sentry.js"></script>
+  <script>
+  Sentry.init({ dsn: 'https://fef52492fdaf4a5483b97ad6fe664c90@sentry.io/1379042' });
+  </script>
+  <link rel="stylesheet" media="all" href="css/style.css" />
+  <script src="https://connect.facebook.net/en_US/fbinstant.6.2.js"></script>
+  <script src="AdsController.js"></script>
+  <script>
+    var ENV = {
+    };
+    var API = {
+      quiz: 'https://www.bamapp.info/api/',
+      track: 'https://tracker.bamapp.info/v2/track/',
+    }
+    var bLazy = false;
+    var IMAGES = ['ma_logo.png', 'house_icon.png', 'spinner.gif', 'refresh-arrow.png'];
+    var preloaded = {};
+  </script>
+  <script src="dist/bundle.js"></script>
+  <script>
+  
+	//*=================================================*//
+	//*-------------------------------------------------*//
+	//*----------------- BAM Quiz ----------------------*//
+	//*--------------- Instant Game --------------------*//
+	//*-------------- By Mohammed Cha ------------------*//
+	//*-------------- Re-Skinning grp ------------------*//
+	//*-------------------------------------------------*//
+	//*=================================================*//
+
+		window.onload = function() {
+		  FBInstant.initializeAsync().then(function() {
+			FBInstant.logEvent('afterInitialized205');
+			FBInstant.startGameAsync().then(function() {
+			  FBInstant.logEvent('afterStartGameAsync');
+			  document.startApp();
+			});
+		  });
+		};
+		
+	//*=================================================*//
+	//*-------------------------------------------------*//
+	//*----------------- BAM Quiz ----------------------*//
+	//*--------------- Instant Game --------------------*//
+	//*-------------- By Mohammed Cha ------------------*//
+	//*-------------- Re-Skinning grp ------------------*//
+	//*-------------------------------------------------*//
+	//*=================================================*//
+
+  </script>
+</head>
+<body>
+  <div class="header">
+    <img class="house-icon" src="img/house_icon.png" alt="menu">
+    <img id="logo" src="img/ma_logo2.png">
+  </div>
+  <div class="main">
+    <div id="scene"></div>
+  </div>
+  <div id="footer">
+  Powered By <strong>Re-sKinning</strong>
+  </div>
+  <div id='main-loader'><div></div><div></div><div></div><div></div></div>
+  <script id="home-template" type="template">
+    <div id="home-quiz-list"></div>
+  </script>
+  <script id="footer-template" type="template">
+    {{#i18n}}disclaimer{{/i18n}}
+  </script>
+  <script id="related-partial" type="template">
+    <div id="related-quizzes">
+      {{#featured_quiz}}
+        {{>featuredPartial}}
+      {{/featured_quiz}}
+      {{#quizzes}}
+        <div class="quiz-holder" data-id="{{ id }}">
+          <div class="ibox quiz-listing">
+            <div class="wide-img-wrapper">
+              <div class="wide-img">
+                <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ featured_thumb }}" class="b-lazy"  alt="{{ title }}">
+              </div>
+            </div>
+            <p>{{title}}</p>
+            <span class="quiz-label"</span>
+          </div>
+        </div>
+      {{/quizzes}}
+    </div>
+  </script>
+  <script id="featured-partial" type="template">
+    <div class="quiz-holder main-quiz" data-id="{{ featured_quiz.id }}">
+      <div class="ibox quiz-listing hover-highlight">
+        <div class="wide-img-wrapper">
+          <div class="wide-img">
+            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-src="{{ featured_quiz.featured_thumb }}" class="b-lazy"  alt="{{ featured_quiz.title }}">
+          </div>
+        </div>
+        <p>{{featured_quiz.title}}</p>
+        <span class="quiz-label"></span>
+      </div>
+    </div>
+  </script>
+  <script id="quiz-template" type="template">
+    <div id="quiz-result" data-id="{{ id }}">
+      <div id="quiz-title">{{ title }}</div>
+      {{#has_questions}}
+        {{>questionsPartial}}
+      {{/has_questions}}
+      <div id="result" style="display: none">
+        <div class="btn fb-share disabled" id="first-share"><img src="img/fb-icon.png">{{#i18n}}share{{/i18n}}</div>
+        <div id="result-wrapper" style="height: {{max_height}}vw" >
+            <div id="result-loader">
+              <div id="loader-images">
+                <img src="img/1.png">
+                <img src="img/2.png">
+                <img src="img/3.png">
+                <img src="img/4.png">
+                <img src="img/5.png">
+              </div>
+              <div id="loader-text">{{#i18n}}loadingYourResult{{/i18n}}</div>
+            </div>
+          </div>
+        <div class="btn fb-share disabled"><img src="img/fb-icon.png">{{#i18n}}share{{/i18n}}</div>
+        <div class="btn tryagain disabled"><img src="img/refresh-arrow.png">{{#i18n}}tryAgain{{/i18n}}</div>
+      </div>
+    </div>
+    <div>
+      <div id="related-quizzes-ca">{{#i18n}}loadMore{{/i18n}}</div>
+      <div id="related-quizzes-wrapper"></div>
+    </div>
+  </script>
+  <script id="questions-partial" type="template">
+      <div class="quiz-questions">
+        {{#questions}}
+          {{#is_text_select}}
+            <div class="question text" data-id="{{id}}">
+              <div class="question-title">{{text}}</div>
+              <div class="question-answers">
+              {{#answers}}
+                <div class="answer-wrapper" data-id="{{id}}" data-value="{{data}}">
+                  <div class="text">{{text}}</div>
+                </div>
+              {{/answers}}
+              </div>
+            </div>
+          {{/is_text_select}}
+          {{#is_image_select}}
+            <div class="question image" data-id="{{id}}">
+              <div class="question-title">{{text}}</div>
+              <div class="question-answers">
+              {{#answers}}
+                <div class="answer-wrapper" data-id="{{id}}" data-value="{{data}}">
+                  <div class="img-wrapper">
+                    <div class='question-loader'><div></div><div></div><div></div><div></div></div>
+                    <img data-src="{{image_url}}" class="b-lazy">
+                  </div>
+                  <div class="text">{{text}}</div>
+                </div>
+              {{/answers}}
+              </div>
+            </div>
+          {{/is_image_select}}
+        {{/questions}}
+      </div>
+  </script>
+  <script id="result-template" type="template">
+    <div id="result">
+      <div class="result-html">{{ &result_html }}</div>
+    </div>
+  </script>
+  <script id="result-template-with-image" type="template">
+    <div id="result">
+      <img style="width: 95%; margin: 0 auto; display: block" class="result-image share" src="{{src}}" />
+    </div>
+  </script>
+</body>
+
+<!-------------------------------------------------->
+<!-------------------------------------------------->
+<!------------------ BAM Quiz ---------------------->
+<!---------------- Instant Game -------------------->
+<!--------------- By Mohammed Cha ------------------>
+<!--------------- Re-Skinning grp ------------------>
+<!-------------------------------------------------->
+<!-------------------------------------------------->
+
+</html>
